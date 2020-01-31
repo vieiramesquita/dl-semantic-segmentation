@@ -69,7 +69,9 @@ def exec(img_path, output_dir, chip_size, pad_size,	flip,	rotate, shuffle = True
 
 	dat_ndarray = np.memmap(dat_path, dtype=chips_info['dat_dtype'], mode='w+', shape=chips_info['dat_shape'])
 	exp_ndarray = np.memmap(exp_path, dtype=chips_info['exp_dtype'], mode='w+', shape=chips_info['exp_shape'])
-
+	
+	
+	
 	print("Generating " + str(chips_info['dat_shape'][0]) + " chips into " + output_dir + " directory.")
 	dl_utils.generate_chips(img_path, dat_ndarray, exp_ndarray, nodata_value, chip_size, pad_size, offset_list, rotate, flip, discard_nodata)
 
@@ -99,8 +101,6 @@ if __name__ == "__main__":
 	offset_list = parse_offset(args.offset)
 
 	getChips = exec(img_path, output_dir, chip_size, pad_size,	flip,	rotate, shuffle, offset_list, nodata_value, discard_nodata)
-	
-	getChips = None
 	
 	elapsed_time = time.time() - start_time
 	print('Time elapsed ' + str(elapsed_time) + ' seg.');
