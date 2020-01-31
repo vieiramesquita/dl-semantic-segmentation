@@ -80,9 +80,7 @@ def exec(img_path, output_dir, chip_size, pad_size,	flip,	rotate, shuffle = True
 	dat_ndarray.flush()
 	exp_ndarray.flush()
 	
-	dat_ndarray = exp_ndarray = None
-
-	#return dat_ndarray, exp_ndarray
+	return dat_ndarray, exp_ndarray
 
 if __name__ == "__main__":
 	args = parse_args()
@@ -100,7 +98,9 @@ if __name__ == "__main__":
 	discard_nodata = args.discard_nodata
 	offset_list = parse_offset(args.offset)
 
-	exec(img_path, output_dir, chip_size, pad_size,	flip,	rotate, shuffle, offset_list, nodata_value, discard_nodata)
-
+	getChips = exec(img_path, output_dir, chip_size, pad_size,	flip,	rotate, shuffle, offset_list, nodata_value, discard_nodata)
+	
+	getChips = None
+	
 	elapsed_time = time.time() - start_time
 	print('Time elapsed ' + str(elapsed_time) + ' seg.');
