@@ -79,8 +79,10 @@ def exec(img_path, output_dir, chip_size, pad_size,	flip,	rotate, shuffle = True
 
 	dat_ndarray.flush()
 	exp_ndarray.flush()
+	
+	dat_ndarray = exp_ndarray = None
 
-	return dat_ndarray, exp_ndarray
+	#return dat_ndarray, exp_ndarray
 
 if __name__ == "__main__":
 	args = parse_args()
